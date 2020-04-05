@@ -98,9 +98,8 @@ class Stats_widget(QFrame):
 
 	def add_row(self, items, row_type='row'):
 		"""Add one row"""
-		items = items[:-1]
 		list_items = []
-		for item in items:
+		for item in items[:10]:
 			index = items.index(item)
 			data = item.text
 			if index == 1: data = int(data.replace(',', ''))
