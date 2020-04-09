@@ -24,7 +24,7 @@ class Stats_widget(QFrame):
 		self.TABLE_HEADERS = (self.tr('Country'), self.tr('Total cases'), self.tr('New cases'), 
 						self.tr('Total deaths'), self.tr('New deaths'), self.tr('Total recovered'), 
 						self.tr('Active cases'), self.tr('Serious, critical'), self.tr('Total cases per 1M'),
-						self.tr('Total deaths per 1M'), )
+						self.tr('Total deaths per 1M'), self.tr('Total tests'), self.tr('Tests per 1M'), )
 	#vbox_main
 		self.vbox_main = QVBoxLayout()
 		self.setLayout(self.vbox_main)
@@ -99,9 +99,10 @@ class Stats_widget(QFrame):
 	def add_row(self, items, row_type='row'):
 		"""Add one row"""
 		list_items = []
-		for item in items[:10]:
+		for item in items[:12]:
 			index = items.index(item)
-			data = item.text
+			data = item.get_text()
+			data = data.strip()
 			if index == 1: data = int(data.replace(',', ''))
 			self.item = MyItem()
 			if row_type == 'headers': self.item.set_total_info(data)
